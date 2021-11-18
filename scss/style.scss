@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+$color-text: #a6adb4;
+$color-title: #202124;
+$color-gray: #f6f8f9;
+$color-accent: #fa6980;
+$color-footer: #a6adb4;
+
+// 引数と初期値
+@mixin inner($w: 800px) {
+  max-width: $w;
+  width: 90%;
+  margin: 0 auto;
+}
+
+@mixin flex($jc: space-between, $ai: flex-start) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+@mixin article($n: 380) {
+  width: ($n/800 * 100%);
+}
+
+/*BASE
+------------------------------------------------*/
+body {
+  color: $color-text;
+  font-size: 14px;
+  font-family: "Helvetica Neue" Helvetica, Arial, sans-serif;
+  line-height: (24/14);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+li {
+  list-style: none;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: $color-title;
+  font-weight: bold;
+  line-height: (30/18);
+}
+
+/*MODULE
+------------------------------------------------*/
+// morenews
+.morenews {
+  margin-top: 60px;
+  &__inner {
+    @include inner();
+  }
+  &__news {
+    @include flex();
+  }
+}
+
+// news
+.news {
+  &__list {
+    @include article();
+    margin-bottom: 60px;
+  }
+  &__category {
+    margin-bottom: 5px;
+    color: $color-accent;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  &__item {
+    @include flex($jc: flex-start, $ai: center);
+    margin-top: 20px;
+  }
+  &__time {
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 12px;
+  }
+}
+
+// btn
+.btn {
+  display: inline-block;
+  padding: 13px 43px;
+  background-color: $color-accent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/*BLOCK
+------------------------------------------------*/
+.header {
+  margin-top: 30px;
+  &__inner {
+    @include inner();
+    @include flex($ai: center);
+  }
+}
+
+.g-nav {
+  &__list {
+    @include flex();
+  }
+  &__link {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 20px;
+    color: $color-text;
+  }
+}
+
+/*-- title-main --*/
+.title-main {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ebeded;
+  color: $color-title;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.trending {
+  background-color: $color-gray;
+  padding-top: 60px;
+
+  &__inner {
+    @include inner();
+  }
+
+  &__list {
+    @include flex();
+  }
+
+  &__item {
+    @include article();
+  }
+}
+
+.footer {
+  background-color: $color-footer;
+}
